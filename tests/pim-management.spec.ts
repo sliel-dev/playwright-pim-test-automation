@@ -45,6 +45,8 @@ test('OrangeHRM PIM 사원 등록 및 삭제 (정상 흐름)', async ({ page }) 
   await test.step('4. 로그아웃 및 복귀 검증', async () => {
     await page.locator('.oxd-userdropdown-name').click();
     await page.getByRole('menuitem', { name: 'Logout' }).click();
+    // 파이어폭스 브라우저에서 로그아웃 후 URL이 즉시 변경되지 않는 경우가 있어 waitForURL 추가
+    await page.waitForURL(/auth\/login/);
     await expect(page).toHaveURL(/auth\/login/);
   });
 });
