@@ -11,10 +11,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Set up Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v5
       with:
         node-version: '24'
         cache: 'npm'
@@ -33,7 +33,7 @@ jobs:
 
     # 테스트가 끝나면 성공/실패 결과 리포트 업로드
     - name: Upload Playwright Report
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       if: always()
       with:
         name: playwright-report
